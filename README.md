@@ -1,3 +1,9 @@
+[!IMPORTANT]
+> **Local build status · November 23, 2026**
+>
+> Shaders, assets, and runtime finished. Vulkan pipeline validation completed **20,500 of 26,503 checks (77.3%)**. The active batch reported one shader still compiling after **19 minutes, 3 seconds**.
+>
+> [See the log findings and PC specs](#local-build-diagnostics--november-23-2026).
 
 <h4 align="center">Grand Theft Auto VI (Xbox Series) running natively on Windows, built on your PC from your own copy.
 </h4>
