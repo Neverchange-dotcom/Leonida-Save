@@ -69,6 +69,38 @@ Nothing is playable on any platform yet (see *Project status*). What runs where 
 
 GPU results from every platform are collected in #166; how to run the tests is in [docs/testing.md](docs/testing.md).
 
+## Local build diagnostics — November 23, 2026
+
+The shader, asset, and runtime stages finished in the latest logged run. Vulkan pipeline validation reached 20,500 of 26,503 shaders in completed batches (77.3%). Batch 20,501–21,000 was still in progress. The build logs establish neither a successful game boot nor playability.
+
+### Build machine
+
+| Component | Observed configuration |
+| --- | --- |
+| CPU | AMD Ryzen 9 9950X, 16 cores and 32 logical processors |
+| GPU | AMD Radeon RX 9060 XT, Windows driver 32.0.32029.2010 |
+| OS | Windows 11 Home, build 26200 |
+| Memory | About 30.6 GiB reported physical memory, 30.6 GiB visible to Windows |
+| Build tooling | .NET SDK 8.0.428 in the asset log, Ninja for the runtime build |
+| Leonida source checkout | 5d74c272363f2703265d44e6aaab1a1df8ddfaf3 |
+
+### Log findings
+
+| Local log | Latest result |
+| --- | --- |
+| shaders.log | Stage finished at 6:47:22 PM. Earlier translation records show 26,503 main shaders translated and passing SPIR-V validation. A separate auxiliary pass translated 21 of 29 programs and validated all 21 translated outputs. Another auxiliary pass translated and validated 52 of 52. |
+| assets.log | Stage finished at 6:47:36 PM. Earlier terrain texture export reported limited BCPack conversion for some outputs. Earlier audio export passes reported 7,162 and 1,818 successes and zero failures. |
+| runtime.log | Runtime built at 6:47:40 PM. The build skipped the GameInput shim because it could not find SDL3. |
+| pipelines.log | The last completed 500-shader batch reported zero pipeline failures or skips and a 7.5-second checker wall time. The next batch started at 7:05:36 PM, used 16 workers, and loaded a 2,415,772,292-byte pipeline cache (about 2.25 GiB). |
+
+Times are Pacific on November 23, 2026.
+
+### Current bottleneck
+
+The active batch reached a progress line of 250 after four seconds. The checker then repeatedly reported that the same indirect-diffuse lighting compute shader was still compiling, most recently after 1,143 seconds (19 minutes, 3 seconds). The checker process was present when sampled. The available log ends before a completion or failure for this batch, so the evidence shows a prolonged compile with an undetermined outcome. The 77.3% figure counts only completed batches.
+
+This snapshot summarizes the four local builder logs and Windows hardware inventory. It omits local paths, raw game data, shader identifiers, and cache contents.
+
 ## How to build
 
 The port isn't downloaded ready-made. It's built on your PC from your own copy.
