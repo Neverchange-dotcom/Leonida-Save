@@ -1,9 +1,4 @@
 
-  <br>
-  <b>Leonida</b>
-  <br>
-</h1>
-
 <h4 align="center">Grand Theft Auto VI (Xbox Series) running natively on Windows, built on your PC from your own copy.
 </h4>
 
