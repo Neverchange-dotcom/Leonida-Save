@@ -1,7 +1,7 @@
 [!IMPORTANT]
 > **Local build status · November 23, 2026**
 >
-> Shaders, assets, and runtime finished. Vulkan pipeline validation completed **20,500 of 26,503 checks (77.3%)**. The active batch reported one shader still compiling after **19 minutes, 3 seconds**.
+> Shaders, assets, and runtime finished. Vulkan pipeline validation completed **20,500 of 26,503 checks (77.3%)**. The active batch reported one shader still compiling after **27 minutes, 5 seconds**.
 >
 > [See the log findings and PC specs](#local-build-diagnostics--november-23-2026).
 
