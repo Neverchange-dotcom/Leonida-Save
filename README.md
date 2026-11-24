@@ -1,8 +1,3 @@
-<h1 align="center">
-  <br>
-  <a>
-  <img src="assets/logo.png" alt="Leonida" width="200">
-</a>
 
   <br>
   <b>Leonida</b>
